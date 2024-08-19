@@ -11,7 +11,7 @@ pipeline {
         stage ('SonarQube-SAST'){
             steps {
                 script{
-                    def scannerHome = tool 'sonarscanner4';
+                    def scannerHome = tool 'sonar-qube';
                     withSonarQubeEnv('sonar-scanner') {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=rocket-nodejs"
                     }
