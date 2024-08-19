@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Build Images') {
             steps {
                 script {
-                    sh 'docker build -t naresh2603/helm-rockets:v1 .'
+                    sh 'docker build -t jzjaved/project-rock:v1 .'
                     sh 'docker images'
                 }
             }
@@ -37,8 +37,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-                        sh "docker login -u naresh2603 -p ${dockerPassword}"
-                        sh 'docker push naresh2603/helm-rockets:v1'
+                        sh "docker login -u jzjaved -p ${dockerPassword}"
+                        sh 'docker push jzjaved/project-rock:v1'
                     }
                 }
             }
