@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script{
                     def scannerHome = tool 'sonarscanner4';
-                    withSonarQubeEnv('sonar-pro') {
+                    withSonarQubeEnv('sonar-scanner') {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=rocket-nodejs"
                     }
                 }
