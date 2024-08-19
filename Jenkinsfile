@@ -4,7 +4,7 @@ pipeline {
         stage ('SCM checkout') {
             steps {
                 script{
-                     git credentialsId: 'git-cred', url: 'https://github.com/naresh26git/helm-node.git'
+                     git credentialsId: 'git-cred', url: 'https://github.com/jzjaved/helm-node.git'
                 }
             }
         }
@@ -53,7 +53,7 @@ pipeline {
         stage('Deploy on k8s') {
             steps {
                 script {
-                    withKubeCredentials(kubectlCredentials: [[ credentialsId: 'kubernetes' ]]) {
+                    withKubeCredentials(kubectlCredentials: [[ credentialsId: 'kube' ]]) {
                         sh 'kubectl create secret generic helm --from-file=.dockerconfigjson=/opt/dockerconfig/config.json  --type kubernetes.io/dockerconfigjson --dry-run=client -oyaml > secret.yaml'
                         sh 'kubectl apply -f secret.yaml'
                         sh 'helm package ./Helm'
