@@ -57,7 +57,7 @@ pipeline {
                         sh 'kubectl create secret generic helm --from-file=.dockerconfigjson=/opt/dockerconfig/config.json  --type kubernetes.io/dockerconfigjson --dry-run=client -oyaml > secret.yaml'
                         sh 'kubectl apply -f secret.yaml'
                         sh 'helm package ./Helm'
-                        sh 'helm install myrocket ./myrocketapp-0.1.0.tgz'
+                        sh 'helm install myrockets ./myrocketapp-0.1.0.tgz'
                         sh 'helm ls'
                         sh 'kubectl get pods -o wide'
                         sh 'kubectl get svc'
