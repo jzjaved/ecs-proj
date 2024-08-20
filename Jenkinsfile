@@ -65,6 +65,7 @@ pipeline {
                 }
             }
         }
+        #wget https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2.14.0_Linux.tar.gz
         stage('Dast Scanning OWASP') {
             steps {
                 script{
